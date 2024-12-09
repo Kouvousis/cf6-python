@@ -1,0 +1,10 @@
+2024-12-05 20:58:39,514:ERRORsearch-appError occurred: 300 is not in list
+Traceback (most recent call last):
+  File "C:\Users\jim\Desktop\python-cf6\chapter05\18_loggin_app.py", line 25, in main
+    index = nums.index(300)
+ValueError: 300 is not in list
+2024-12-05 20:59:07,740:ERRORsearch-appError occurred: 3000 is not in list
+Traceback (most recent call last):
+  File "C:\Users\jim\Desktop\python-cf6\chapter05\18_loggin_app.py", line 25, in main
+    index = nums.index(3000)
+ValueError: 3000 is not in list
