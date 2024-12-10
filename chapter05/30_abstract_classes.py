@@ -48,8 +48,55 @@ class StudentImpl(AbstractStudentDAO):
     def get_one(self, student_id):
         return self.students.get(student_id, None)
     
+class InventoryABC(ABC):
+    def add_item(self, item):
+        """Add an item to the inventory"""
+        pass
+    
+    def remove_item(self, item_name_to_remove):
+        """Remove an item from the inventory"""
+        pass
+    
+class Inventory(InventoryABC):
+    def __init__(self):
+        self.items = []
+        
+    def add_item(self, item):
+        """Add an item to the inventory"""
+        self.items.append(item)
+        
+    def remove_item(self, item_name_to_remove):
+        """Remove an item fom the inventory by name"""
+        for item in self.items:
+            if item.name == item_name_to_remove:
+                self.items.remove(item_name_to_remove)
+                print(f"Removed item {item_name_to_remove}")
+                return
+        print(f"Ite not found: {item_name_to_remove}")
+        
+class Item:
+    def __init__(self, name):
+        self.name = name
+        
+    def __str__(self):
+        return self.name
+    
 def main():
-    pass
+    student_impl = StudentImpl()
+    student_impl.insert({'id':1, 'name':"Alice"})
+    student_impl.insert({'id':2, 'name':"Bob"})
+    
+    student_impl.update(1, {'id':1, 'name':"SuperAlice"})
+    print(student_impl.get_one(1))
+    
+    inventory = Inventory()
+    item1 = Item("Laptop")
+    item2 = Item("Phone")
+    inventory.add_item(item1)
+    inventory.add_item(item2)
+    
+    
+    
 
 if __name__ =="__main__":
     main()
